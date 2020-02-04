@@ -1,11 +1,16 @@
 document.querySelectorAll(".drum").forEach(item => {
-  item.addEventListener("click", handleClick);
+  item.addEventListener("click", () => {
+    let buttonInner = item.innerHTML;
+    handleClick(buttonInner);
+  });
 });
 
-function handleClick() {
-  let buttonInner = this.innerHTML;
+document.addEventListener("keydown", event => {
+  handleClick(event.key);
+});
 
-  switch (buttonInner) {
+function handleClick(key) {
+  switch (key) {
     case "w":
       const tom1 = new Audio("sounds/tom-1.mp3");
       tom1.play();
