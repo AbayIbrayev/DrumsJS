@@ -2,11 +2,14 @@ document.querySelectorAll(".drum").forEach(item => {
   item.addEventListener("click", () => {
     let buttonInner = item.innerHTML;
     handleClick(buttonInner);
+
+    buttomAnimation(buttonInner);
   });
 });
 
 document.addEventListener("keydown", event => {
   handleClick(event.key);
+  buttomAnimation(event.key);
 });
 
 function handleClick(key) {
@@ -44,4 +47,14 @@ function handleClick(key) {
       alert("Wrong button! Use the buttons provided.");
       break;
   }
+}
+
+function buttomAnimation(currentKey) {
+  let activeButton = document.querySelector("." + currentKey);
+
+  activeButton.classList.add("pressed");
+
+  setTimeout(() => {
+    activeButton.classList.remove("pressed");
+  }, 100);
 }
